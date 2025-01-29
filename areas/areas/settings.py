@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     #"django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
@@ -87,12 +87,10 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'estates',
-        'USER': 'singh',
-        'PASSWORD': 'singh',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://real_estate_kfe7_user:urnj1MmthlnBIVdtSzAW1ddVsW53qKVB@dpg-cud810tumphs73di5nag-a/real_estate_kfe7',
+    )
     }
 }
 database_url = os.environ.get('DATABASE_URL')
@@ -149,3 +147,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS= os.path.join(BASE_DIR, 'static'),
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
