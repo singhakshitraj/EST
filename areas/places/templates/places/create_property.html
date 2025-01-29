@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static tailwind_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Form</title>
+    {% tailwind_css %}
+    {% include "navbar.html" %}
+</head>
+<body class="bg-eight text-black">
+    <div class="container mx-auto">
+        <div class="xl:flex xl:space-x-8">
+            <!-- Image Section -->
+            <div class="xl:w-1/2 xl:mb-0">
+                <img src="{% static 'villa.jpg' %}" alt="" class="w-full h-[100vh] rounded-lg shadow-md object-cover">
+            </div>
+    
+            <!-- Form Section -->
+            <div class="xl:w-1/2 flex flex-col h-[90vh] my-auto items-center overflow-y-auto py-5">
+                <h1 class="text-2xl font-bold mb-6 text-primary text-white">ADD PROPERTY</h1>
+                
+                <form method="post" enctype="multipart/form-data" class="w-[90%] px-4 rounded-lg shadow-md p-6 bg-seven">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Name</label>
+                        {{ form.name }}
+                    </div>
+    
+                    <!-- Description Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Description</label>
+                        {{ form.description }}
+                    </div>
+    
+                    <!-- Price Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.price.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Price</label>
+                        {{ form.price }}
+                    </div>
+    
+                    <!-- Image Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Image</label>
+                        {{ form.image }}
+                    </div>
+    
+                    <!-- Square Foot Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.square_foot.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Square Foot</label>
+                        {{ form.square_foot }}
+                    </div>
+    
+                    <!-- Location Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.location.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Location</label>
+                        {{ form.location }}
+                    </div>
+    
+                    <!-- BHK Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.bhk.id_for_label }}" class="block text-sm font-medium text-secondary text-white">BHK</label>
+                        {{ form.bhk }}
+                    </div>
+    
+                    <!-- Additional BHK Field -->
+                    <div class="mb-4">
+                        <label for="{{ form.additional_bhk.id_for_label }}" class="block text-sm font-medium text-secondary text-white">Additional BHK</label>
+                        {{ form.additional_bhk }}
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <button type="submit" class="bg-nine w-full bg-accent text-one px-4 py-2 rounded hover:bg-accent-dark transition-colors">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
