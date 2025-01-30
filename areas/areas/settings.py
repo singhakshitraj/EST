@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'tailwind',
     # 'theme',
     # 'django_browser_reload',
-    'places'
+     'places'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

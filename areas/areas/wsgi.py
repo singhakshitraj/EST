@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
+print("Current Working Directory:", os.getcwd())
+print("Python Path:", sys.path)
 
 from django.core.wsgi import get_wsgi_application
 
