@@ -34,10 +34,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tailwind',
-    # 'theme',
-    # 'django_browser_reload',
-     'places'
+    
 ]
+if ENVIRONMENT == 'development':
+    DEBUG=True
+    INSTALLED_APPS.extend(['theme','django_browser_reload','places'])
+    
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
