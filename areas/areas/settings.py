@@ -41,7 +41,7 @@ if ENVIRONMENT == 'development':
     DEBUG=True
     INSTALLED_APPS.extend(['theme','django_browser_reload','places'])
 else:
-    INSTALLED_APPS.extend(['areas.places'])
+    INSTALLED_APPS.extend(['places.apps.PlacesConfig',])
     
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
