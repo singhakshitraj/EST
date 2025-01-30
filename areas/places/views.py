@@ -60,7 +60,7 @@ def login_(request):
             return redirect('Login-Page')
     else:
         form = AuthenticationForm()
-    return render(request=request,template_name='login.html',context = {'form':form})
+    return render(request=request,template_name='registration/login.html',context = {'form':form})
             
 @login_required
 def createProperty(request):
