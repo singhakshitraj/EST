@@ -12,7 +12,7 @@ from django.db.models import Q
 
 def front(request):
     properties = Property.objects.all()
-    return render(request,'templates/places/landing_page.html',{'property':properties})
+    return render(request,'landing_page.html',{'property':properties})
 
 def register_(request):
     if request.method == 'POST':
@@ -84,11 +84,11 @@ def createProperty(request):
             return redirect(HttpResponseBadRequest('Invalid Form'))
     else:
         form = PropertyCreationForm()
-    return render(request=request,template_name='templates/places/create_property.html',context={'form':form})
+    return render(request=request,template_name='create_property.html',context={'form':form})
 
 def viewProperty(request,id):
     prop = get_object_or_404(Property,pk=id)
-    return render(request=request,template_name='templates/places/property_page.html',context={'property':prop})
+    return render(request=request,template_name='property_page.html',context={'property':prop})
 
 @login_required
 def purchaseProperty(request,id):
@@ -103,7 +103,7 @@ def purchaseProperty(request,id):
             props.save()
             return redirect('Front')
     else:
-        return render(request,'templates/places/property_page.html')
+        return render(request,'property_page.html')
     
 def logout_(request):
     if request.user:
@@ -121,7 +121,7 @@ def search(request):
         query = request.GET.get('query','random').lower()
         props = Property.objects.filter(Q(name__icontains=query)|Q(description__icontains=query)|Q(location__icontains=query)|Q(additional_bhk__icontains=query))
         props.order_by('price')
-        return render(request,'templates/places/search.html',context={'data':props})        
+        return render(request,'search.html',context={'data':props})        
     else:
         return HttpResponseBadRequest('Invalid Query')
 
@@ -137,4 +137,4 @@ def confirm(request,id):
                 item.bought_by = Account.objects.get(pk=request.user)
             item.save()
             return redirect('Front')
-    return render(request,'templates/places/confirm_buy.html',{'property':item})
+    return render(request,'confirm_buy.html',{'property':item})
