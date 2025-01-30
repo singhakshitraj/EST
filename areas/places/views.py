@@ -38,7 +38,7 @@ def register_(request):
     else:
         print('HERE')
         form = NewUserCreationForm()
-    return render(request=request,template_name='registration/register.html',context={'form':form})
+    return render(request=request,template_name='register.html',context={'form':form})
 
 def login_(request):
     if request.method == 'POST':
@@ -60,7 +60,7 @@ def login_(request):
             return redirect('Login-Page')
     else:
         form = AuthenticationForm()
-    return render(request=request,template_name='registration/login.html',context = {'form':form})
+    return render(request=request,template_name='login.html',context = {'form':form})
             
 @login_required
 def createProperty(request):
