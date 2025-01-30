@@ -141,6 +141,5 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS= [
     os.path.join(BASE_DIR, 'static/templates/places/'),
     os.path.join(BASE_DIR, 'static/templates/'),
-    os.path.join(BASE_DIR, 'static/templates/registration'),
 ],
 STATIC_ROOT = BASE_DIR / 'staticfiles'

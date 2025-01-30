@@ -38,7 +38,7 @@ def register_(request):
     else:
         print('HERE')
         form = NewUserCreationForm()
-    return render(request=request,template_name='register.html',context={'form':form})
+    return render(request=request,template_name='reg/register.html',context={'form':form})
 
 def login_(request):
     if request.method == 'POST':
