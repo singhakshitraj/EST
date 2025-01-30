@@ -35,10 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'tailwind',
     
+    
 ]
 if ENVIRONMENT == 'development':
     DEBUG=True
     INSTALLED_APPS.extend(['theme','django_browser_reload','places'])
+else:
+    INSTALLED_APPS.extend(['areas.places'])
     
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
