@@ -34,8 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tailwind',
-    
-    
 ]
 if ENVIRONMENT == 'development':
     DEBUG=True
