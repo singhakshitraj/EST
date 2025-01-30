@@ -34,8 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tailwind',
-    'theme',
-    'django_browser_reload',
+    # 'theme',
+    # 'django_browser_reload',
     'places'
 ]
 MIDDLEWARE = [
