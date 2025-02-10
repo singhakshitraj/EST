@@ -10,8 +10,8 @@ from django.contrib import messages
 from django.http import HttpResponseNotFound,HttpResponseBadRequest
 from django.db.models import Q
 
-async def front(request):
-    properties = await Property.objects.all()
+def front(request):
+    properties = Property.objects.all()
     return render(request,'landing_page.html',{'property':properties})
 
 def register_(request):
