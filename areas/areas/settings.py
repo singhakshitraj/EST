@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 if ENVIRONMENT == 'development':
-    DEBUG=True
+    DEBUG=False
 else:
     DEBUG = True
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'tailwind',
 ]
 if ENVIRONMENT == 'development':
-    DEBUG=True
     INSTALLED_APPS.extend(['theme','django_browser_reload','places'])
 else:
     INSTALLED_APPS.extend(['places.apps.PlacesConfig',])
@@ -137,16 +136,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-
-if ENVIRONMENT == 'production':
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-else:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('CLOUD_API_KEY'),
-    'API_SECRET': env('CLOUD_API_SECRET')
+    'cloud_name': env('CLOUD_NAME'),
+    'api_key': env('CLOUD_API_KEY'),
+    'api_secret': env('CLOUD_API_SECRET')
 }
+#if ENVIRONMENT == 'production':
+#else:
+#    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS= [
