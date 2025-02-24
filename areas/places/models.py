@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class Account(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
@@ -23,7 +24,7 @@ class Property(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
     price = models.PositiveIntegerField()   
-    image = models.ImageField(upload_to='media/')
+    image = CloudinaryField('image',folder='property')
     square_foot = models.PositiveIntegerField()
     location = models.CharField(max_length=120)
     bhk = models.CharField(choices=BHK_CHOICE)

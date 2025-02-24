@@ -2,6 +2,9 @@ from pathlib import Path
 import os
 import dj_database_url
 from environ import Env
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 env = Env()
 Env.read_env()
 ENVIRONMENT = env('ENVIRONMENT') 
@@ -32,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
     'cloudinary',
+    'cloudinary_storage',
     'django.contrib.humanize',
     'tailwind',
 ]
@@ -135,16 +138,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
+cloudinary.config( 
+  cloud_name = env('CLOUD_NAME'), 
+  api_key = env('CLOUD_API_KEY'), 
+  api_secret = env('CLOUD_API_SECRET')
+)
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_STORAGE = {
-    'cloud_name': env('CLOUD_NAME'),
-    'api_key': env('CLOUD_API_KEY'),
-    'api_secret': env('CLOUD_API_SECRET')
-}
-#if ENVIRONMENT == 'production':
-#else:
-#    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS= [
